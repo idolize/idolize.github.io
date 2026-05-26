@@ -70,6 +70,12 @@
         /* Solid fallback; also what Safari injects into the safe-area strips
            since canvas-rendered pixels can't reach those areas. */
         background-color: #000d1c;
+        background-image:
+          radial-gradient(75vw 75vh at left 0 top 0, #001a39, transparent),
+          radial-gradient(75vw 75vh at right 0 top 0, #9b70ff, transparent),
+          radial-gradient(75vw 75vh at right 0 bottom 0, #42ffc6, transparent),
+          radial-gradient(75vw 75vh at left 0 bottom 0, #ff3b8d, transparent);
+        background-attachment: fixed;
       }
 
       #bg-dim {
