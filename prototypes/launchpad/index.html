@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#08090A;}
+  ::selection{background:rgba(16,185,129,0.28);}
+  input{font-family:inherit;}
+  input::placeholder{color:#878C96;}
+  input:focus{outline:none;}
+  button{font-family:inherit;}
+  @keyframes lpfade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  @keyframes lprise{from{opacity:0;transform:translateY(10px) scale(.99);}to{opacity:1;transform:none;}}
+  @keyframes lpglow{0%{opacity:.55;}50%{opacity:.85;}100%{opacity:.62;}}
+  @keyframes lpswap{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+</style>
+</helmet>
+
+<div style="position:relative;width:100%;min-height:100vh;font-family:Inter,system-ui,sans-serif;background:#08090A;color:#F7F8F8;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
+
+  <!-- ambient top glow -->
+  <sc-if value="{{ showGlow }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;top:-420px;right:-160px;width:1100px;height:900px;max-width:120vw;pointer-events:none;background:radial-gradient(46% 46% at 60% 50%, rgba(16,185,129,0.16) 0%, rgba(52,211,153,0.05) 44%, rgba(8,9,10,0) 72%);z-index:0;animation:lpglow 11s ease-in-out infinite;"></div>
+  </sc-if>
+
+  <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 40px;">
+
+    <!-- ===== brand bar (no nav) ===== -->
+    <div style="display:flex;align-items:center;gap:11px;padding:30px 0 6px;">
+      <div style="width:30px;height:30px;border-radius:9px;background:linear-gradient(160deg,#10B981,#059669);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px -4px rgba(16,185,129,0.6);">
+        <div style="width:0;height:0;border-left:5.5px solid transparent;border-right:5.5px solid transparent;border-bottom:8.5px solid #04130D;"></div>
+      </div>
+      <span style="font-size:18px;font-weight:600;letter-spacing:-0.02em;">Launchpad</span>
+    </div>
+
+    <!-- ===== HERO (split, left content / right asset) ===== -->
+    <section style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(40px,5vw,72px);padding:clamp(48px,7vw,92px) 0 clamp(56px,7vw,96px);">
+      <div style="flex:1 1 400px;min-width:300px;">
+        <h1 style="margin:0 0 22px;max-width:560px;font-size:clamp(38px,4.6vw,60px);line-height:1.04;font-weight:600;letter-spacing:-0.035em;text-wrap:balance;">The internal app directory for AI-native teams.</h1>
+        <p style="margin:0 0 36px;max-width:480px;font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:#9CA1AA;text-wrap:pretty;">Securely deploy and share the things your team builds with {{ swapEl }}. One login, one place, no engineer required.</p>
+
+        <!-- email capture (top) -->
+        <div style="max-width:452px;">
+          <sc-if value="{{ joinedA }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:11px;height:50px;padding:0 16px;border-radius:10px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.32);animation:lprise .4s cubic-bezier(.16,1,.3,1);">
+              <span style="width:22px;height:22px;border-radius:50%;background:linear-gradient(160deg,#10B981,#059669);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2.6 6.2l2.1 2.1 4.6-5" stroke="#04130D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span style="font-size:14.5px;font-weight:500;color:#6EE7B7;">You're on the list. We'll reach out at {{ joinedEmailA }}</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ formA }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <label for="lp-email-a" style="display:block;font-size:13px;font-weight:500;color:#B6BAC2;margin-bottom:9px;">Work email</label>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <input id="lp-email-a" value="{{ emailA }}" onInput="{{ onEmailA }}" onKeyDown="{{ onKeyA }}" placeholder="you@company.com" style="flex:1 1 200px;min-width:0;height:50px;padding:0 15px;border-radius:10px;border:1px solid {{ borderA }};background:#15171B;color:#F7F8F8;font-size:15px;transition:border-color .15s ease,box-shadow .15s ease;" style-focus="border-color:#10B981;box-shadow:0 0 0 3px rgba(16,185,129,0.16);">
+                <button onClick="{{ joinA }}" style="flex-shrink:0;height:50px;padding:0 22px;border:none;border-radius:10px;background:#10B981;color:#04130D;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s ease,transform .12s ease;white-space:nowrap;" style-hover="background:#34D399;transform:translateY(-1px);" style-active="transform:translateY(0) scale(.985);">Join the waitlist</button>
+              </div>
+              <sc-if value="{{ errA }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:9px;font-size:13px;color:#F1998E;animation:lpfade .2s ease;">Enter a valid work email to continue.</div>
+              </sc-if>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <!-- product screenshot, right -->
+      <div style="flex:1.25 1 520px;min-width:300px;position:relative;">
+        <sc-if value="{{ showGlow }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;inset:-40px -20px -30px;pointer-events:none;background:radial-gradient(60% 55% at 50% 40%, rgba(16,185,129,0.18) 0%, rgba(8,9,10,0) 70%);z-index:0;"></div>
+        </sc-if>
+        <div style="position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);box-shadow:0 1px 0 rgba(255,255,255,0.05) inset,0 40px 90px -36px rgba(0,0,0,0.8);">
+          <img src="./assets/launchpad-product.png" alt="Launchpad workspace showing a team's internal tools in one directory" style="display:block;width:100%;height:auto;">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROBLEM (full-width left statement) ===== -->
+    <section style="padding:clamp(40px,6vw,80px) 0;border-top:1px solid rgba(255,255,255,0.07);">
+      <p style="margin:0;max-width:840px;font-size:clamp(22px,2.8vw,32px);line-height:1.32;font-weight:500;letter-spacing:-0.02em;color:#7C828C;text-wrap:pretty;"><span style="color:#F7F8F8;">Someone on your team just built something useful with AI.</span> <span style="color:#7C828C;">Hosting is too complex, public links have no access control, and engineering has no time to deploy everyone's side projects.</span></p>
+    </section>
+
+    <!-- ===== HOW IT WORKS (alternating media rows) ===== -->
+    <section style="padding:clamp(44px,6vw,80px) 0;">
+      <h2 style="margin:0 0 clamp(8px,2vw,20px);max-width:520px;font-size:clamp(26px,3.1vw,38px);line-height:1.12;font-weight:600;letter-spacing:-0.03em;text-wrap:balance;">From prototype to company-wide in three steps.</h2>
+
+      <!-- 01 Deploy: text left / screenshot right -->
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,5vw,72px);padding-top:clamp(36px,5vw,64px);">
+        <div style="flex:1 1 320px;min-width:280px;">
+          <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:13px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:500;color:rgba(16,185,129,0.6);line-height:1;flex-shrink:0;">01</span>
+            <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-0.02em;">Deploy in seconds</h3>
+          </div>
+          <p style="margin:0;max-width:420px;font-size:15.5px;line-height:1.6;color:#9CA1AA;text-wrap:pretty;">Drop in a static page, a prototype, or a data tool. No deploy config and no engineer required, whether or not you use Git.</p>
+        </div>
+        <div style="flex:1.15 1 440px;min-width:280px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect;">
+          <img src="./assets/xray-new.png" alt="New project dialog with Git repository, zip upload, and external URL as deploy sources" style="display:block;width:100%;height:auto;">
+        </div>
+      </div>
+
+      <!-- 02 Access: screenshot left / text right -->
+      <div style="display:flex;flex-wrap:wrap;flex-direction:row-reverse;align-items:center;gap:clamp(32px,5vw,72px);padding-top:clamp(44px,6vw,80px);">
+        <div style="flex:1 1 320px;min-width:280px;">
+          <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:13px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:500;color:rgba(16,185,129,0.6);line-height:1;flex-shrink:0;">02</span>
+            <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-0.02em;">Set who can access it</h3>
+          </div>
+          <p style="margin:0;max-width:420px;font-size:15.5px;line-height:1.6;color:#9CA1AA;text-wrap:pretty;">Choose who sees it: just you, your team, or the whole company. Access uses your existing company login, so there are no new passwords and no public URLs.</p>
+        </div>
+        <div style="flex:1.15 1 440px;min-width:280px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect;">
+          <img src="./assets/xray-share.png" alt="Share dialog controlling whether everyone, specific teams, or specific people can open a project" style="display:block;width:100%;height:auto;">
+        </div>
+      </div>
+
+      <!-- 03 Directory: heading + full-width screenshot -->
+      <div style="margin-top:clamp(44px,6vw,80px);padding-top:clamp(28px,4vw,44px);border-top:1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,48px);align-items:baseline;margin-bottom:clamp(28px,4vw,44px);">
+          <div style="flex:1 1 280px;min-width:240px;display:flex;align-items:baseline;gap:16px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:500;color:rgba(16,185,129,0.6);line-height:1;flex-shrink:0;">03</span>
+            <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-0.02em;">Find it in one directory</h3>
+          </div>
+          <p style="flex:1 1 340px;min-width:260px;margin:0;font-size:15.5px;line-height:1.6;color:#9CA1AA;text-wrap:pretty;">Every published tool lives in one shared place. Colleagues find it, use it, and request access, while IT keeps full visibility.</p>
+        </div>
+        <div style="position:relative;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 10%,#000 90%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 10%,#000 90%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%);mask-composite:intersect;">
+          <img src="./assets/xray-dash.png" alt="Launchpad directory showing the full grid of internal tools the team has published" style="display:block;width:100%;height:auto;">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== QUOTE (left, large) ===== -->
+    <section style="padding:clamp(48px,7vw,96px) 0;">
+      <blockquote style="margin:0;max-width:900px;font-size:clamp(24px,3.2vw,38px);line-height:1.32;font-weight:500;letter-spacing:-0.025em;color:#EDEFF1;text-wrap:pretty;">&ldquo;I've been asking for a place to host our internal tools for months. The blocker is always security and access. People just share files with nowhere central to find them.&rdquo;</blockquote>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:30px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:#1B1E22;border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" fill="#787E88"/><path d="M5 19.2c0-3.4 3.1-5.6 7-5.6s7 2.2 7 5.6" fill="#787E88"/></svg></div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#F7F8F8;">Director of Product Design</div>
+          <div style="font-size:13px;color:#7C828C;">Mid-sized SaaS company</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHO IT'S FOR (text columns) ===== -->
+    <section style="padding:clamp(40px,6vw,72px) 0;border-top:1px solid rgba(255,255,255,0.07);">
+      <h2 style="margin:0 0 clamp(28px,4vw,52px);max-width:480px;font-size:clamp(26px,3.1vw,38px);line-height:1.12;font-weight:600;letter-spacing:-0.03em;text-wrap:balance;">Built for everyone who ships.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:clamp(28px,4vw,56px);">
+        <sc-for list="{{ personas }}" as="pe" hint-placeholder-count="3">
+          <div>
+            <h3 style="margin:0 0 11px;font-size:17px;font-weight:600;letter-spacing:-0.015em;color:#F7F8F8;">{{ pe.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#9CA1AA;text-wrap:pretty;">{{ pe.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA (full-width band, left-aligned) ===== -->
+    <section style="padding:clamp(36px,5vw,64px) 0 clamp(56px,7vw,96px);">
+      <div style="position:relative;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,0.09);background:linear-gradient(180deg,#0E0F12,#0B0C0E);padding:clamp(40px,5vw,64px);">
+        <div style="position:absolute;top:-260px;right:-120px;width:640px;height:560px;max-width:90%;pointer-events:none;background:radial-gradient(50% 50% at 50% 50%, rgba(16,185,129,0.16) 0%, rgba(8,9,10,0) 70%);"></div>
+        <div style="position:relative;z-index:1;max-width:560px;">
+          <h2 style="margin:0 0 14px;font-size:clamp(26px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.03em;text-wrap:balance;">Be the first to know when Launchpad launches.</h2>
+          <p style="margin:0 0 30px;max-width:440px;font-size:clamp(15px,1.6vw,17px);line-height:1.55;color:#9CA1AA;text-wrap:pretty;">We're building in the open and talking with early teams now. Join the waitlist and we'll reach out.</p>
+
+          <!-- email capture (bottom) -->
+          <div style="max-width:452px;">
+            <sc-if value="{{ joinedB }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:11px;height:50px;padding:0 16px;border-radius:10px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.34);animation:lprise .4s cubic-bezier(.16,1,.3,1);">
+                <span style="width:22px;height:22px;border-radius:50%;background:linear-gradient(160deg,#10B981,#059669);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2.6 6.2l2.1 2.1 4.6-5" stroke="#04130D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span style="font-size:14.5px;font-weight:500;color:#6EE7B7;">You're on the list. We'll reach out at {{ joinedEmailB }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ formB }}" hint-placeholder-val="{{ true }}">
+              <div>
+                <label for="lp-email-b" style="display:block;font-size:13px;font-weight:500;color:#B6BAC2;margin-bottom:9px;">Work email</label>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                  <input id="lp-email-b" value="{{ emailB }}" onInput="{{ onEmailB }}" onKeyDown="{{ onKeyB }}" placeholder="you@company.com" style="flex:1 1 200px;min-width:0;height:50px;padding:0 15px;border-radius:10px;border:1px solid {{ borderB }};background:#15171B;color:#F7F8F8;font-size:15px;transition:border-color .15s ease,box-shadow .15s ease;" style-focus="border-color:#10B981;box-shadow:0 0 0 3px rgba(16,185,129,0.16);">
+                  <button onClick="{{ joinB }}" style="flex-shrink:0;height:50px;padding:0 22px;border:none;border-radius:10px;background:#10B981;color:#04130D;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s ease,transform .12s ease;white-space:nowrap;" style-hover="background:#34D399;transform:translateY(-1px);" style-active="transform:translateY(0) scale(.985);">Join the waitlist</button>
+                </div>
+                <sc-if value="{{ errB }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:9px;font-size:13px;color:#F1998E;animation:lpfade .2s ease;">Enter a valid work email to continue.</div>
+                </sc-if>
+              </div>
+            </sc-if>
+          </div>
+          <p style="margin:18px 0 0;font-size:12.5px;color:#6E747E;">No spam. Just an update when there's something worth sharing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:26px 0 44px;border-top:1px solid rgba(255,255,255,0.07);">
+      <div style="display:flex;align-items:center;gap:9px;">
+        <div style="width:18px;height:18px;border-radius:5px;background:linear-gradient(160deg,#10B981,#059669);display:flex;align-items:center;justify-content:center;">
+          <div style="width:0;height:0;border-left:3.5px solid transparent;border-right:3.5px solid transparent;border-bottom:5.5px solid #04130D;"></div>
+        </div>
+        <span style="font-size:13.5px;font-weight:600;color:#C7CAD0;">Launchpad</span>
+      </div>
+      <span style="font-size:12.5px;color:#6E747E;">Secured with SSO · SOC 2 in progress</span>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;heroGlow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { emailA:'', emailB:'', joinedA:false, joinedB:false, errA:false, errB:false, joinedEmailA:'', joinedEmailB:'', wordIdx:0, wordVis:true };
+
+  componentDidMount(){
+    this._t = setInterval(()=>{
+      this.setState({wordVis:false});
+      this._t2 = setTimeout(()=>this.setState(s=>({wordIdx:s.wordIdx+1, wordVis:true})), 260);
+    }, 2100);
+  }
+  componentWillUnmount(){ clearInterval(this._t); clearTimeout(this._t2); }
+
+  valid(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((e||'').trim()); }
+
+  onEmailA=(e)=>this.setState({emailA:e.target.value, errA:false});
+  onEmailB=(e)=>this.setState({emailB:e.target.value, errB:false});
+
+  joinA=()=>{ const v=this.state.emailA.trim(); if(!this.valid(v)){ this.setState({errA:true}); return; } this.setState({joinedA:true, joinedEmailA:v}); };
+  joinB=()=>{ const v=this.state.emailB.trim(); if(!this.valid(v)){ this.setState({errB:true}); return; } this.setState({joinedB:true, joinedEmailB:v}); };
+
+  onKeyA=(e)=>{ if(e.key==='Enter') this.joinA(); };
+  onKeyB=(e)=>{ if(e.key==='Enter') this.joinB(); };
+
+  renderVals(){
+    const s=this.state;
+    const words=['Claude','Codex','Cursor'];
+    const swapEl=React.createElement('span',{style:{color:'#34D399',fontWeight:500,display:'inline-block',opacity:s.wordVis?1:0,transform:s.wordVis?'none':'translateY(5px)',transition:'opacity .26s ease, transform .26s ease'}},words[s.wordIdx%words.length]);
+    return {
+      swapEl,
+      showGlow: this.props.heroGlow !== false,
+      emailA:s.emailA, onEmailA:this.onEmailA, onKeyA:this.onKeyA, joinA:this.joinA,
+      joinedA:s.joinedA, formA:!s.joinedA, errA:s.errA, joinedEmailA:s.joinedEmailA,
+      borderA: s.errA ? 'rgba(241,153,142,0.55)' : 'rgba(255,255,255,0.1)',
+      emailB:s.emailB, onEmailB:this.onEmailB, onKeyB:this.onKeyB, joinB:this.joinB,
+      joinedB:s.joinedB, formB:!s.joinedB, errB:s.errB, joinedEmailB:s.joinedEmailB,
+      borderB: s.errB ? 'rgba(241,153,142,0.55)' : 'rgba(255,255,255,0.1)',
+      personas:[
+        {title:'The builder', body:'You made something useful with Claude, Codex, or Cursor. Launchpad gets it in front of your team in minutes, without a complex deployment.'},
+        {title:'The eng lead', body:"You're getting pinged to host random internal tools. Get one place to see everything, control access, and stay out of the ticket queue."},
+        {title:'The whole team', body:'A directory of the tools your colleagues built. Searchable, accessible with your work login, no IT ticket required.'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
