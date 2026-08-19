@@ -109,7 +109,7 @@
   [
     #strong[Mar 2026 – present]
 
-    #emph[Remote]
+    #emph[Raleigh, NC]
 
   ],
   main-column-second-row: [
@@ -126,13 +126,13 @@
   [
     #strong[#fa-icon("laptop-code", fill: rgb("808080")) #h(0.15cm) VITL & District]
 
-    #emph[Staff Software Engineer \/ Consultant]
+    #emph[Fractional Staff Software Engineer]
 
   ],
   [
     #strong[Mar 2025 – present]
 
-    #emph[Remote]
+    #emph[New York, NY (Remote)]
 
   ],
   main-column-second-row: [

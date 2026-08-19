@@ -15,16 +15,16 @@ cv:
         position: Founder & Principal Engineer
         start_date: 2026-03
         end_date: present
-        location: Remote
+        location: Raleigh, NC
         highlights:
           - Architected a secure [developer platform](https://volly.so) to deploy, sandbox, and govern internal AI applications.
           - "Designed workload isolation, fine-grained access control (RBAC/ABAC), and secure proxy gateways to prevent unauthorized data access across applications."
           - Built telemetry and security audit logging infrastructure to track access to company resources across multi-tenant environments.
       - company: '#fa-icon("laptop-code", fill: rgb("808080")) #h(0.15cm) VITL & District'
-        position: Staff Software Engineer / Consultant
+        position: Fractional Staff Software Engineer
         start_date: 2025-03
         end_date: present
-        location: Remote
+        location: New York, NY (Remote)
         highlights:
           - "**District:** Architected an autonomous AI agent generating dynamic UI themes, marketplace layouts, and product schemas from natural language prompts; built real-time visual canvas editing tools and secure merchant APIs."
           - "**VITL:** Led full-stack architectural rewrite and cloud migration for an e-prescription platform; engineered HIPAA-compliant audit logging, row-level database security (RLS), and zero-trust transactional workflows."
