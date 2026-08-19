@@ -1,0 +1,193 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+cv:
+  name: David Idol
+  email: david.idol@gmail.com
+  phone: "+19193082755"
+  location: Raleigh, NC
+  social_networks:
+    - network: LinkedIn
+      username: rdidol
+    - network: GitHub
+      username: idolize
+  sections:
+    experience:
+      - company: '#fa-icon("shield-halved", fill: rgb("808080")) #h(0.15cm) Volly'
+        position: Founder & Principal Engineer
+        start_date: 2026-03
+        end_date: present
+        location: Remote
+        highlights:
+          - Architected a secure [developer platform](https://volly.so) to deploy, sandbox, and govern internal AI applications.
+          - "Designed workload isolation, fine-grained access control (RBAC/ABAC), and secure proxy gateways to prevent unauthorized data access across applications."
+          - Built telemetry and security audit logging infrastructure to track access to company resources across multi-tenant environments.
+      - company: '#fa-icon("laptop-code", fill: rgb("808080")) #h(0.15cm) VITL & District'
+        position: Staff Software Engineer / Consultant
+        start_date: 2025-03
+        end_date: present
+        location: Remote
+        highlights:
+          - "**District:** Architected an autonomous AI agent generating dynamic UI themes, marketplace layouts, and product schemas from natural language prompts; built real-time visual canvas editing tools and secure merchant APIs."
+          - "**VITL:** Led full-stack architectural rewrite and cloud migration for an e-prescription platform; engineered HIPAA-compliant audit logging, row-level database security (RLS), and zero-trust transactional workflows."
+      - company: '#fa-icon("discord", fill: rgb("808080")) #h(0.15cm) Discord'
+        position: Engineering Manager - Shop Team
+        start_date: 2023-06
+        end_date: 2025-03
+        location: San Francisco, CA (Remote)
+        highlights:
+          - "Led engineering for the global [\"Shop\"](https://discord.com/blog/complete-your-look-in-the-shop-now-open-to-all) ecosystem across Desktop, iOS, and Android, beating annual revenue targets by >200% through iterative product experiments and algorithmic ranking."
+          - Engineered secure ingestion pipelines and asset validation for 3P enterprise IP drops (e.g., Paramount, Riot Games), enforcing stringent access controls to prevent early data leaks.
+          - Optimized API response times and client prefetching by >50%, ensuring high-throughput reliability during peak global traffic drops.
+      - company: '#fa-icon("snapchat", fill: rgb("808080")) #h(0.15cm) Snap Inc'
+        position: Engineering Manager & Tech Lead
+        start_date: 2015-03
+        end_date: 2023-02
+        location: Los Angeles, CA
+        highlights:
+          - "Managed a 6-engineer team building [developer tools](https://developers.snap.com/), serving APIs, and SDK infrastructure powering Snap Kit and Snap Games for 400+ enterprise partners."
+          - Architected an isolated local-server SDK bridge to securely bypass runtime platform restrictions, receiving personal recognition from the CEO for resolving critical launch blockers.
+          - "Designed developer verification and content moderation systems featuring asset sandboxing, automated abuse reporting, and granular role-based access control."
+          - "Built the core Canvas/SVG rendering engine for \"Create Your Own\" web tools and architected internal geospatial indexing engines for large-scale sponsored ad infrastructure."
+      - company: '#fa-icon("xbox", fill: rgb("808080")) #h(0.15cm) Microsoft Xbox'
+        position: Software Engineer - Xbox Live Compute
+        start_date: 2013-06
+        end_date: 2015-02
+        location: Redmond, WA
+        highlights:
+          - Built developer portal tools and CLI utilities used by external game studios to deploy server packages, provision cloud resources, and run remote diagnostics.
+          - Implemented real-time event ingestion and log-aggregation pipelines to monitor long-running server sessions and crash telemetry.
+      - company: '#fa-icon("google", fill: rgb("808080")) #h(0.15cm) Google'
+        position: Software Engineering Intern - Google Web Toolkit
+        start_date: 2012-06
+        end_date: 2012-08
+        location: Mountain View, CA
+        highlights:
+          - "Implemented the JSR-303 JavaBean data validation framework for client/server compilation in GWT 2.5 and wrote [the official documentation](https://www.gwtproject.org/doc/latest/DevGuideValidation)."
+    education:
+      - institution: '#fa-icon("building-columns", fill: rgb("808080")) #h(0.15cm) University of North Carolina at Chapel Hill'
+        area: Computer Science
+        degree: MS & BS
+        date: 2013-05
+        location: Chapel Hill, NC
+    projects:
+      - name: DoodletronAI
+        summary: iOS App (Swift)
+        highlights:
+          - "Built an [iOS app](https://doodletron.art) that transforms children's drawings into expressive AI-generated video and audio, encouraging creativity."
+          - Orchestrated a pipeline of open-weight generative image, video, and audio models to render each drawing into an animated short.
+      - name: "[[Sold]](https://blog.acquire.com/startup-acquisition-episode-99/) Keyboard and Mouse for Xbox Cloud Gaming"
+        summary: Browser Extension (TypeScript)
+        highlights:
+          - Reverse-engineered the browser Gamepad API to intercept, translate, and simulate analog controller states from mouse and keyboard inputs
+          - "[280,000+ active users](https://modernkit.one/xcloud-keyboard-mouse/) across Google Chrome and Microsoft Edge"
+      - name: MSW HTTP Middleware
+        summary: JavaScript Library (TypeScript)
+        highlights:
+          - "Authored [official network interception middleware](https://dev.to/kettanaito/spawn-an-http-server-from-your-mock-service-worker-request-handlers-2c19) for Mock Service Worker (4.7M downloads/month), enabling direct HTTP server mocking for testing complex developer workflows."
+      - name: Saber Song Patcher
+        summary: Windows Application (C#)
+        highlights:
+          - Engineered an [audio file integrity and patching tool](https://medium.com/@idolize/beat-saber-the-future-of-custom-songs-d64756818be7) using acoustic fingerprinting and cryptographic hashing to validate matching music tracks regardless of encoding format.
+design:
+  theme: classic
+  page:
+    size: us-letter
+    top_margin: 1.3cm
+    bottom_margin: 1.3cm
+    left_margin: 1.5cm
+    right_margin: 1.5cm
+    show_footer: true
+    show_top_note: false
+  colors:
+    body: rgb(0, 0, 0)
+    name: rgb(0, 0, 0)
+    headline: rgb(0, 0, 0)
+    connections: rgb(0, 0, 0)
+    section_titles: rgb(0, 0, 0)
+    links: rgb(66, 102, 150)
+    footer: rgb(128, 128, 128)
+    top_note: rgb(128, 128, 128)
+  typography:
+    line_spacing: 0.6em
+    alignment: left
+    date_and_location_column_alignment: right
+    font_family:
+      body: Open Sans
+      name: Poppins
+      headline: Open Sans
+      connections: Open Sans
+      section_titles: Open Sans
+    font_size:
+      body: 10pt
+      name: 26pt
+      headline: 10pt
+      connections: 10pt
+      section_titles: 1.2em
+    bold:
+      name: true
+      headline: false
+      connections: false
+      section_titles: true
+  links:
+    underline: true
+    show_external_link_icon: false
+  header:
+    alignment: left
+    space_below_name: 0.3cm
+    space_below_connections: 0.5cm
+    connections:
+      phone_number_format: national
+      hyperlink: true
+      show_icons: true
+      display_urls_instead_of_usernames: false
+      separator: ''
+      space_between_connections: 0.5cm
+  section_titles:
+    type: with_full_line
+    line_thickness: 1pt
+    space_above: 0.9cm
+    space_below: 0.45cm
+  sections:
+    space_between_regular_entries: 0.35cm
+    space_between_text_based_entries: 0.15cm
+    show_time_spans_in: []
+  entries:
+    date_and_location_width: 4.2cm
+    side_space: 0cm
+    space_between_columns: 0.15cm
+    short_second_row: false
+    highlights:
+      bullet: ■
+      nested_bullet: ◦
+      space_above: 0.08cm
+      space_between_items: 0.08cm
+  templates:
+    experience_entry:
+      main_column: |-
+        **COMPANY**
+        *POSITION*
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column: |-
+        **DATE**
+        *LOCATION*
+    education_entry:
+      main_column: |-
+        **INSTITUTION**
+        *DEGREE in AREA*
+        SUMMARY
+        HIGHLIGHTS
+      degree_column: ''
+      date_and_location_column: |-
+        **DATE**
+        *LOCATION*
+locale:
+  language: english
+settings:
+  current_date: today
+  render_command:
+    output_folder: files
+    dont_generate_markdown: true
+    dont_generate_html: true
+    dont_generate_png: true
+  bold_keywords: []
+  pdf_title: David Idol - CV

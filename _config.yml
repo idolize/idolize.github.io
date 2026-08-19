@@ -1,0 +1,14 @@
+# GitHub Pages (Jekyll) build config.
+# Keeps the resume's build tooling tracked in git for history, without
+# publishing it as part of the live site. The site links directly to
+# resume/files/David_Idol_CV.pdf, which IS published (its .typ sibling
+# is the Typst build intermediate and isn't needed).
+exclude:
+  - resume/pyproject.toml
+  - resume/uv.lock
+  - resume/skills-lock.json
+  - resume/files/David_Idol_CV.typ
+  - resume/.venv
+  - resume/.agents
+  - resume/.claude
+  - resume/.python-version
