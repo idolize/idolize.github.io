@@ -4,3 +4,6 @@ dist
 .eslintcache
 .DS_Store
 npm-debug.log
+
+# Python for rendercv
+.venv/
