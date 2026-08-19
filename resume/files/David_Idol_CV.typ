@@ -103,7 +103,7 @@
   [
     #strong[#fa-icon("shield-halved", fill: rgb("808080")) #h(0.15cm) Volly]
 
-    #emph[Founder & Principal Engineer]
+    #emph[Founder]
 
   ],
   [
