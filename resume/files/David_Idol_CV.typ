@@ -161,7 +161,7 @@
 
     - Engineered secure ingestion pipelines and asset validation for 3P enterprise IP drops (e.g., Paramount, Riot Games), enforcing stringent access controls to prevent early data leaks.
 
-    - Optimized API response times and client prefetching by \>50\%, ensuring high-throughput reliability during peak global traffic drops.
+    - Optimized API response times and client prefetching by \>50\%, ensuring high-throughput reliability during peak global product launches.
 
   ],
 )

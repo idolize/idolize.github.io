@@ -36,7 +36,7 @@ cv:
         highlights:
           - "Led engineering for the global [\"Shop\"](https://discord.com/blog/complete-your-look-in-the-shop-now-open-to-all) ecosystem across Desktop, iOS, and Android, beating annual revenue targets by >200% through iterative product experiments and algorithmic ranking."
           - Engineered secure ingestion pipelines and asset validation for 3P enterprise IP drops (e.g., Paramount, Riot Games), enforcing stringent access controls to prevent early data leaks.
-          - Optimized API response times and client prefetching by >50%, ensuring high-throughput reliability during peak global traffic drops.
+          - Optimized API response times and client prefetching by >50%, ensuring high-throughput reliability during peak global product launches.
       - company: '#fa-icon("snapchat", fill: rgb("808080")) #h(0.15cm) Snap Inc'
         position: Engineering Manager & Tech Lead
         start_date: 2015-03
